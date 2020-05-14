@@ -38,7 +38,7 @@ class AddDeck extends Component {
     const {text} = this.state
     if( text === ''){
 			if (Platform.OS == 'android'){
-				ToastAndroid.show('Deck name cannot be blank!', ToastAndroid.LONG)
+				ToastAndroid.show("Deck name can't be blank!", ToastAndroid.LONG)
 			}
 		}
     else{
