@@ -21,8 +21,8 @@ const RouteConfigs = {
   DeckList: {
     screen: DeckList,
     navigationOptions: {
-      title: "Deck List View",
-      tabBarLabel: "View Decks",
+      title: 'Deck list view',
+      tabBarLabel: 'View decks',
       tabBarIcon: ({ tintColor }) => (
         <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
       )
@@ -45,11 +45,11 @@ const TabNavigatorConfig = {
     header: null
   },
   tabBarOptions: {
-      activeTintColor: Platform.OS === "ios" ? purple : white,
+      activeTintColor: Platform.OS === 'ios' ? purple : white,
       style: {
         height: 56,
-        backgroundColor: Platform.OS === "ios" ? white : purple,
-        shadowColor: "rgba(0, 0, 0, 0.24)",
+        backgroundColor: Platform.OS === 'ios' ? white : purple,
+        shadowColor: 'rgba(0, 0, 0, 0.24)',
         shadowOffset: {
         width: 0,
       },
@@ -59,7 +59,7 @@ const TabNavigatorConfig = {
   }
 }
 
-const Tabs = Platform.OS === "ios"
+const Tabs = Platform.OS === 'ios'
 ? createBottomTabNavigator(RouteConfigs, TabNavigatorConfig)
 : createMaterialTopTabNavigator(RouteConfigs, TabNavigatorConfig);
 

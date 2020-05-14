@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import { View, Text, ScrollView, TouchableOpacity, StatusBar } from 'react-native'
-import { getDecks, saveDeckTitle } from '../../utils/api'
+import { getDecks } from '../../utils/api'
 import { receiveDecks, addDeck } from '../../actions'
 import ListItems from '../list-items'
 import { connect } from 'react-redux'
 import { AppLoading } from 'expo'
 import DeckInfo from '../deck-info'
-import { purple } from '../../utils/colors'
 import { Constants } from 'expo'
 
-function AppStatusBar({ backgroundColor, ...props}) {
+const AppStatusBar = ({ backgroundColor, ...props}) => {
   return (
     <View style={{backgroundColor, height: Constants.statusBarHeight}}>
       <StatusBar translucent backgroundColor={backgroundColor} {...props} />
@@ -54,7 +53,7 @@ class DeckList extends Component {
 		return ( 
 			<ScrollView>
 				 {arr.map(
-           ({questions, title, index}) => {
+           ({questions, title}) => {
              console.log('QWER', questions, title, 'something', `${title}${arr.length+1}`);
              
               return <TouchableOpacity key={`${title}+${arr.length}`} onPress={(e) => this._onForward(title,questions)}>
@@ -76,6 +75,4 @@ function mapStateToProps (decks) {
   }
 }
 
-export default connect(
-  mapStateToProps,
-)(DeckList)
+export default connect(mapStateToProps)(DeckList)

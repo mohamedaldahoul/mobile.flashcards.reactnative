@@ -2,15 +2,12 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native'
 import { connect } from 'react-redux'
 
-import { getDecks, saveDeckTitle } from '../../utils/api'
 import { blue, purple } from '../../utils/colors'
-import { receiveDecks, addDeck } from '../../actions'
 
-import ListItems from '../list-items'
 import AddCard from '../add-card'
 import Quiz from '../quiz'
 
-function SubmitBtn ({ onPress, text }) {
+const SubmitBtn = ({ onPress, text }) => {
   return (
     <TouchableOpacity 
       style={Platform.OS === 'ios'? styles.iosSubmitBtn : styles.androidSubmitBtn}
@@ -22,12 +19,12 @@ function SubmitBtn ({ onPress, text }) {
 
 
 class DeckInfo extends Component {
-	newcard(title) {
+	newCard = (title) => {
     const {navigate} = this.props.navigation
     navigate( 'AddCard',{title})
   }
 
-  quiz(title,questions) {
+  quiz = (title,questions) => {
     const {navigate} = this.props.navigation
     navigate( 'Quiz',{title, questions})
   }
@@ -42,7 +39,7 @@ class DeckInfo extends Component {
           <Text style={[styles.heading,{fontSize: 20}]} > {questions.length} cards </Text>
         </View>
         <View style={[styles.outerborder]}>
-          <SubmitBtn text='Add card' onPress={() => this.newcard(title)} />
+          <SubmitBtn text='Add card' onPress={() => this.newCard(title)} />
           <SubmitBtn text='Start quiz' onPress={() => this.quiz(title,questions)} />
         </View>
       </View>

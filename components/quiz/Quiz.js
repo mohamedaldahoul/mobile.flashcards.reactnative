@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet, Platform, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { blue } from '../../utils/colors'
-import { AppLoading } from 'expo'
 import TextButton from '../text-button'
 
-function SubmitBtn ({ onPress, text }) {
+const SubmitBtn = ({ onPress, text }) => {
   return (
     <TouchableOpacity 
       style={Platform.OS === 'ios'? styles.iosSubmitBtn : styles.androidSubmitBtn, 
@@ -23,30 +22,32 @@ class Quiz extends Component {
     const { title, questions } = this.props.navigation.state.params
     const total_ques = questions.length
     const current_index = Math.floor(Math.random() * total_ques)
-    this.state = { correct:0, done:1, viewing_ques: true, ques_asked: new Set([current_index]), 
-    title, questions, total_ques, display_result: false, current_index }
-
-    this.mark_correct=this.mark_correct.bind(this)
-    this.mark_incorrect=this.mark_incorrect.bind(this)
-    this.generate_ques_index=this.generate_ques_index.bind(this)
-    this.toggle_view=this.toggle_view.bind(this)
-    this.generate_ques=this.generate_ques.bind(this)
+    this.state = { 
+      correct: 0, 
+      done: 1, 
+      viewing_ques: true, 
+      ques_asked: new Set([current_index]), 
+      title, 
+      questions, 
+      total_ques, 
+      display_result: false, 
+      current_index, 
+    }
   }
 
-  	generate_ques_index() {
+  	generate_ques_index = () => {
   		return Math.floor(Math.random() * this.state.total_ques)
   	}
 
-  	generate_ques() {
-  		var { ques_asked, done, total_ques } = this.state
+  	generate_ques = () => {
+  		let { ques_asked, done, total_ques } = this.state
 
-  		//check if we are done with all the questions already
   		if ( done === total_ques ){
   			this.setState(() => ({display_result: true}))
   		}
 
   		else { 
-  			var current_index = this.generate_ques_index()
+  			let current_index = this.generate_ques_index()
 	  		while(ques_asked.has(current_index)){
 				current_index = this.generate_ques_index()
 			}
@@ -55,33 +56,33 @@ class Quiz extends Component {
 	  	}
   	}
 
-  	mark_correct() {
+  	mark_correct = () => {
   		this.setState(() => ({done: this.state.done+1, correct: this.state.correct+1}))
   		this.generate_ques()
   	}
 
-  	mark_incorrect() {
+  	mark_incorrect = () => {
   		this.setState(() => ({done: this.state.done+1}))
   		this.generate_ques()
   	}
 
-  	toggle_view() {
+  	toggle_view = () => {
   		this.setState(() => ({viewing_ques: !this.state.viewing_ques}))
   	}
 
   	render(){
-	const { done, questions, viewing_ques, total_ques, current_index, display_result, correct } = this.state
+	    const { done, questions, viewing_ques, total_ques, current_index, display_result, correct } = this.state
 
-	if(display_result) {
-		const accuracy = (correct/total_ques)*100.0
-		return (
-			<View style={{flex: 1, justifyContent: 'center', alignContent: 'center'}}>
-			<Text style={[styles.heading,{fontSize: 40}]} > Keep it up! </Text>
-			<Text style={styles.subheading} > You scored {correct}/{total_ques} questions correctly... </Text>
-			<Text style={styles.subheading} > Accuracy : {accuracy.toFixed(2)}  </Text>
-			</View>
-		)
-	}
+      if(display_result) {
+        const accuracy = (correct/total_ques)*100.0
+        return (
+          <View style={{flex: 1, justifyContent: 'center', alignContent: 'center'}}>
+          <Text style={[styles.heading,{fontSize: 40}]} > Keep it up! </Text>
+          <Text style={styles.subheading} > You scored {correct}/{total_ques} questions correctly... </Text>
+          <Text style={styles.subheading} > Accuracy : {accuracy.toFixed(2)}  </Text>
+          </View>
+        )
+	    }
 
     return(
       <View>
@@ -106,7 +107,7 @@ class Quiz extends Component {
   	}
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
 	return {
 		state
 	}

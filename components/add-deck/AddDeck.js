@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, TextInput, StatusBar } from 'react-native'
-import { blue, gray, purple } from '../../utils/colors'
+import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native'
+import { blue, purple } from '../../utils/colors'
 import { addDeck } from '../../actions'
 import { saveDeckTitle } from '../../utils/api';
 import { connect } from 'react-redux'
-import { Constants } from 'expo'
 import { ToastAndroid } from 'react-native'
 
 function SubmitBtn ({ onPress }) {

@@ -4,10 +4,9 @@ import { connect } from 'react-redux'
 import { AppLoading } from 'expo'
 import { ToastAndroid } from 'react-native'
 
-import { blue, gray, purple } from '../../utils/colors'
+import { purple } from '../../utils/colors'
 import { addCard } from '../../actions'
 import { addCardToDeck } from '../../utils/api'
-import { NavigationActions } from 'react-navigation'
 
 function SubmitBtn ({ onPress }) {
 	return (

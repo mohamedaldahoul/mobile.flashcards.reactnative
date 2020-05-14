@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { blue, gray } from '../../utils/colors'
 
-export default function ListItems ({ title, card_count }){
+const ListItems = ({ title, card_count }) => {
 	return (
 		<View style={styles.outline}>
 			<Text style={styles.heading}>{title}</Text>
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
 		marginBottom: 6,
 		marginLeft: 6,
 		marginRight: 6,
-		shadowColor: "#000000",
+		shadowColor: '#000000',
 	    shadowOpacity: 0.8,
 	    shadowRadius: 2,
 	    shadowOffset: {
@@ -42,3 +42,5 @@ const styles = StyleSheet.create({
 		color: gray
 	}
 })
+
+export default ListItems;
