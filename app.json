@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mobile.flashcards.reactnative",
-    "slug": "mobile.flashcards.reactnative",
+    "name": "mobile_flashcards",
+    "slug": "mobile_flashcards",
     "platforms": [
       "ios",
       "android",
