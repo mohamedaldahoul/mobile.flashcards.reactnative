@@ -18,7 +18,7 @@ const SubmitBtn = ({ onPress, text }) => {
 }
 
 
-class DeckInfo extends Component {
+class IndividualDeck extends Component {
 	newCard = (title) => {
     const {navigate} = this.props.navigation
     navigate( 'AddCard',{title})
@@ -86,4 +86,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default connect(mapStateToProps)(DeckInfo)
+export default connect(mapStateToProps)(IndividualDeck)

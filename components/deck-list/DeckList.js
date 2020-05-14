@@ -5,7 +5,7 @@ import { receiveDecks, addDeck } from '../../actions'
 import ListItems from '../list-items'
 import { connect } from 'react-redux'
 import { AppLoading } from 'expo'
-import DeckInfo from '../deck-info'
+import IndividualDeck from '../individual-deck'
 import { Constants } from 'expo'
 
 const AppStatusBar = ({ backgroundColor, ...props}) => {
@@ -34,7 +34,7 @@ class DeckList extends Component {
     
     _onForward = (title, questions) => {
     	const {navigate} = this.props.navigation;
-	    navigate( 'DeckInfo' ,{title, questions})
+	    navigate( 'IndividualDeck' ,{title, questions})
     }
 
 	render() {

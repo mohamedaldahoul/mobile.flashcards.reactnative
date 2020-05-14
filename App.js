@@ -11,7 +11,7 @@ import { Ionicons, FontAwesome} from '@expo/vector-icons'
 
 import DeckList from './components/deck-list'
 import AddDeck from './components/add-deck'
-import DeckInfo from './components/deck-info'
+import IndividualDeck from './components/individual-deck'
 import AddCard from './components/add-card'
 import Quiz from './components/quiz'
 import reducer from './reducers'
@@ -76,8 +76,8 @@ const MainNavigator = createStackNavigator({
       },
     },
   },
-  DeckInfo: {
-    screen: DeckInfo,
+  IndividualDeck: {
+    screen: IndividualDeck,
     navigationOptions: ({ navigation }) => ({
       title: navigation.state.params.title,
       headerTintColor: white,
